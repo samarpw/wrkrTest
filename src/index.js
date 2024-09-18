@@ -9,7 +9,7 @@ export default {
 		// You'll find it helpful to parse the request.url string into a URL object. Learn more at https://developer.mozilla.org/en-US/docs/Web/API/URL
 		const url = new URL(request.url);
 		const country_code = request.cf.country; //US,UK
-		env.oStore.set('user_country', country_code);
+		env.oStore.put('user_country', country_code);
 		
 		
 		// You can get pretty far with simple logic like if/switch-statements
