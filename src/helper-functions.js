@@ -1,5 +1,5 @@
 const helper_functions = {
-	function CORS_Headers() {
+	CORS_Headers : function(){
 		return {
 				  "Access-Control-Allow-Origin":"*", 
 				  "Access-Control-Allow-Methods":"OPTIONS, POST, GET, DELETE, PUT", 
