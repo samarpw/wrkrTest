@@ -1,19 +1,18 @@
 const helper_functions = {
-	CORS_Headers : function(){
+	CORS_Headers : function () {
 		return {
-				  "Access-Control-Allow-Origin":"*", 
-				  "Access-Control-Allow-Methods":"OPTIONS, POST, GET, DELETE, PUT", 
-				  "Access-Control-Allow-Headers":"x-requested-with, Content-Type, origin, authorization, accept, credentials, client-security-token",
-				  "Access-Control-Max-Age":"600"
+				"Access-Control-Allow-Origin": "*", 
+				"Access-Control-Allow-Methods": "OPTIONS, POST, GET, DELETE, PUT", 
+				"Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, credentials, client-security-token",
+				"Access-Control-Max-Age": "600"
 			}
 	},
 };
-export helper_functions;
 
 
 
 
-export function homepage_html() {
+function homepage_html() {
 	var html = `I Try making requests to:
 	<ul>
 	<li><code><a href="/redirect?redirectUrl=https://example.com/">/redirect?redirectUrl=https://example.com/</a></code>,</li>
@@ -25,7 +24,8 @@ export function homepage_html() {
 
 
 
-
+//Export functions object and the standalone functions.
+export {helper_functions, homepage_html};
 
 
 
