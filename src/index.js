@@ -1,3 +1,6 @@
+import {helper_functions, homepage_html} from './helper-functions.js';
+
+
 // Export a default object containing event handlers
 export default {
 	// The fetch handler is invoked when this worker receives a HTTP(S) request
@@ -5,7 +8,8 @@ export default {
 	async fetch(request, env, ctx) {
 		// You'll find it helpful to parse the request.url string into a URL object. Learn more at https://developer.mozilla.org/en-US/docs/Web/API/URL
 		const url = new URL(request.url);
-		
+		const country_code = request.cf.country; //US,UK
+		env.oStore.set('user_country', country_code);
 		
 		
 		// You can get pretty far with simple logic like if/switch-statements
@@ -16,28 +20,26 @@ export default {
 		
 		
 		if (url.pathname.startsWith('/api/')) {
-			// You can also use more robust routing
+			var headers = helper_functions.CORS_Headers();
+			headers['Content-Type'] = 'text/plain';
+			//You can also use more robust routing
 			return new Response(
 				'aping',
-				{headers:{"Content-Type":"text/plain", 
-						  "Access-Control-Allow-Origin":"*", 
-						  "Access-Control-Allow-Methods":"OPTIONS, POST, GET, DELETE, PUT", 
-						  "Access-Control-Allow-Headers":"x-requested-with, Content-Type, origin, authorization, accept, credentials, client-security-token",
-						  "Access-Control-Max-Age":"600"
-					}
-				}
+				{headers: headers}
 			);
 		}
 		
 		
 		
 		return new Response(
-			`I Try making requests to:
-			<ul>
-			<li><code><a href="/redirect?redirectUrl=https://example.com/">/redirect?redirectUrl=https://example.com/</a></code>,</li>
-			<li><code><a href="/proxy?modify&proxyUrl=https://example.com/">/proxy?modify&proxyUrl=https://example.com/</a></code>, or</li>
-			<li><code><a href="/api/todos">/api/todos</a></code></li>`,
-			{headers:{"Content-Type":"text/plain"}}
+			homepage_html(),
+			{headers:{"Content-Type":"text/html"}}
 		);
 	},
+	
+	
+	
+	/* async scheduled(event, env, ctx) {
+		ctx.waitUntil(doSomeTaskOnASchedule());
+	}, */
 };
