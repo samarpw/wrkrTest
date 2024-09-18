@@ -1,2 +1,6 @@
 name = "worker-name-placeholder"
 main = "src/index.js"
+compatibility_date = "2024-09-18"
+kv_namespaces = [
+  { binding = "oStore", id = "ad710a97b7c746beade3d4ebfb3bfbda" }
+]
