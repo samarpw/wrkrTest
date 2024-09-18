@@ -1,4 +1,4 @@
-export helper_functions = {
+const helper_functions = {
 	function CORS_Headers() {
 		return {
 				  "Access-Control-Allow-Origin":"*", 
@@ -8,6 +8,7 @@ export helper_functions = {
 			}
 	},
 };
+export helper_functions;
 
 
 
